@@ -83,7 +83,7 @@ function Header() {
         <img
           src={brands}
           alt="brands"
-          className="relative -top-3 md:-top-5 lg:-top-7 xl:-top-12 scale-95 2xl:scale-100 rounded-lg"
+          className="relative -top-3 md:-top-5 lg:-top-7 xl:-top-12 scale-90 xl:scale-[0.85] rounded-lg"
         />
       </div>
     </>
