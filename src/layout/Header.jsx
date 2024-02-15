@@ -117,54 +117,66 @@ function MobileMenu() {
           menu ? `${ulStyle} translate-x-0` : `${ulStyle} -translate-x-full `
         }
       >
-        <h2 className="font-bold text-2xl px-4 pt-5 pb-4 border-b">BESART</h2>
-        <li
-          onClick={openMenu}
-          className={
-            window.location.href === "http://localhost:5173/products"
-              ? liActiveStyle
-              : liStyle
-          }
-        >
-          <Link to="/products">SHOP</Link>
-          <img src={chevron} alt="chevron" className="-rotate-90" />
+        <h2 className="font-bold text-2xl px-4 py-5 border-b bg-[#491E4B] text-white">
+          BESART
+        </h2>
+
+        <li onClick={openMenu}>
+          <Link
+            to="/products"
+            className={
+              window.location.href === "http://localhost:5173/products"
+                ? liActiveStyle
+                : liStyle
+            }
+          >
+            <span>SHOP</span>
+            <img src={chevron} alt="chevron" className="-rotate-90" />
+          </Link>
         </li>
 
-        <li
-          onClick={openMenu}
-          className={
-            window.location.href === "http://localhost:5173/help-center"
-              ? liActiveStyle
-              : liStyle
-          }
-        >
-          <Link to="/help-center">HELP CENTER</Link>
-          <img src={chevron} alt="chevron" className="-rotate-90" />
+        <li onClick={openMenu}>
+          <Link
+            to="/help-center"
+            className={
+              window.location.href === "http://localhost:5173/help-center"
+                ? liActiveStyle
+                : liStyle
+            }
+          >
+            <span>HELP CENTER</span>
+            <img src={chevron} alt="chevron" className="-rotate-90" />
+          </Link>
         </li>
 
-        <li
-          onClick={openMenu}
-          className={
-            window.location.href === "http://localhost:5173/contact-us"
-              ? liActiveStyle
-              : liStyle
-          }
-        >
-          <Link to="contact-us">CONTACT US</Link>
-          <img src={chevron} alt="chevron" className="-rotate-90" />
+        <li onClick={openMenu}>
+          <Link
+            to="/contact-us"
+            className={
+              window.location.href === "http://localhost:5173/contact-us"
+                ? liActiveStyle
+                : liStyle
+            }
+          >
+            <span>CONTACT US</span>
+            <img src={chevron} alt="chevron" className="-rotate-90" />
+          </Link>
         </li>
 
-        <li
-          onClick={openMenu}
-          className={
-            window.location.href === "http://localhost:5173/privacy-policy"
-              ? liActiveStyle
-              : liStyle
-          }
-        >
-          <Link to="/privacy-policy">PRIVACY POLICY</Link>
-          <img src={chevron} alt="chevron" className="-rotate-90" />
+        <li onClick={openMenu}>
+          <Link
+            to="/privacy-policy"
+            className={
+              window.location.href === "http://localhost:5173/privacy-policy"
+                ? liActiveStyle
+                : liStyle
+            }
+          >
+            <span>PRIVACY POLICY</span>
+            <img src={chevron} alt="chevron" className="-rotate-90" />
+          </Link>
         </li>
+
         <span className="absolute left-8 bottom-5 text-xs mx-auto opacity-50">
           Developed by Hadi Kia with ❤️
         </span>
