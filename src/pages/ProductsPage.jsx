@@ -1,7 +1,11 @@
+import { useProducts } from "../context/ProductContext";
+
 import topSection from "../assets/top-section.png";
 import brands from "../assets/brands.png";
 
 function ProductsPage() {
+  const products = useProducts();
+
   return (
     <div>
       <div className="grid place-items-center">
@@ -13,7 +17,7 @@ function ProductsPage() {
         />
       </div>
     </div>
-  )
+  );
 }
 
-export default ProductsPage
+export default ProductsPage;
