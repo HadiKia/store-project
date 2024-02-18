@@ -1,4 +1,5 @@
 import { useProducts } from "../context/ProductContext";
+import Card from "../components/Card";
 
 import topSection from "../assets/top-section.png";
 import brands from "../assets/brands.png";
@@ -18,20 +19,15 @@ function ProductsPage() {
       </div>
 
       <div className="container mx-auto px-5 ">
-        <div className="flex flex-col md:flex-row items-start justify-between">
+        <div className="flex flex-col md:flex-row items-start justify-between gap-12">
           {/* sidebar */}
-          <div>sidebar Lorem, ipsum dolor sit amet consectetur</div>
+          <div className="w-full md:w-fit">sidebar Lorem, sidebar Lorem, ipssdfsdfsfum dolor sit sdfdsfsf</div>
 
           {/* products */}
-          <div>
+          <div className="w-full grid grid-cols-2 lg:grid-cols-3 border rounded-xl overflow-hidden">
             {!products.length && <p>Loading...</p>}
             {products.map((product) => (
-              <div key={product.id}>
-                <img src={product.image} alt="" />
-                <span>{product.category}</span>
-                <p>{product.title}</p>
-                <p>${product.price}</p>
-              </div>
+             <Card key={product.id} data={product}/>
             ))}
           </div>
         </div>
