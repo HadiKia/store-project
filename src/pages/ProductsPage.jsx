@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { useProducts } from "../context/ProductContext";
 import { useQuery } from "../context/QueryContext";
-import { filterProducts, searchProducts } from "../helpers/helper";
+import {
+  filterProducts,
+  searchProducts,
+  createQueryObject,
+} from "../helpers/helper";
+import { useSearchParams } from "react-router-dom";
 
 import Card from "../components/Card";
 
@@ -21,11 +26,14 @@ function ProductsPage() {
   const { query, setQuery } = useQuery();
   const [displayed, setDisplayed] = useState([]);
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
     setDisplayed(products);
   }, [products]);
 
   useEffect(() => {
+    setSearchParams(query);
     let finalProducts = searchProducts(products, query.search);
     finalProducts = filterProducts(finalProducts, query.category);
 
@@ -36,7 +44,7 @@ function ProductsPage() {
     const { tagName } = event.target;
     const category = event.target.innerText.toLowerCase();
     if (tagName !== "LI") return;
-    setQuery((query) => ({ ...query, category }));
+    setQuery((query) => createQueryObject(query, { category }));
   };
 
   return (

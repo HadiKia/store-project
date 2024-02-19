@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "../context/QueryContext";
+import { createQueryObject } from "../helpers/helper";
 
 import { Link } from "react-router-dom";
 
@@ -27,7 +28,7 @@ function Header() {
 
   const searchHandler = (event) => {
     event.preventDefault();
-    setQuery((query) => ({ ...query, search }));
+    setQuery((query) => createQueryObject(query, { search }));
   };
 
   return (
