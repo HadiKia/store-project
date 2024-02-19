@@ -5,6 +5,7 @@ import saleBanner from "../assets/sale-banner.png";
 import saleBanner2 from "../assets/sale-banner-mobile.png";
 import bagIcon from "../assets/bag.svg";
 import chevron from "../assets/chevronDown.svg";
+import searchIcon from "../assets/search.svg";
 
 // styles
 const topBarStyle = "flex items-center justify-between py-2 lg:py-3";
@@ -19,8 +20,15 @@ const linkDivStyle = "hidden md:flex items-center gap-x-3 lg:gap-x-7";
 const linkStyle = "hover:text-[#491E4B] duration-300 cursor-pointer pt-3 pb-6";
 
 function Header() {
+  const [search, setSearch] = useState("");
+
+  const searchHandler = (event) => {
+    event.preventDefault();
+    console.log(search);
+  };
+
   return (
-    <div className="sticky top-0 bg-white z-10">
+    <div className="sticky top-0 bg-white z-10 shadow-xl shadow-[#00000010]">
       <Link to="/products">
         <img src={saleBanner} alt="banner" className="hidden lg:block w-full" />
       </Link>
@@ -48,8 +56,28 @@ function Header() {
           </div>
         </div>
 
-        <div className="flex items-center justify-between text-[#000C22] font-medium text-sm xl:text-lg">
-          <div className="flex-1 pt-3 pb-6">search</div>
+        <div className="flex items-center justify-between md:gap-x-3 lg:gap-x-10 text-[#000C22] font-medium text-sm xl:text-lg">
+          <div className="flex-1 pt-3 md:pt-0 mb-4">
+            <form
+              onSubmit={searchHandler}
+              className="bg-[#F2F2F2] max-w-sm py-3 rounded-lg px-4 flex items-center gap-x-3 xl:gap-x-3.5"
+            >
+              <input
+                type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value.toLowerCase().trim())}
+                placeholder="Search"
+                className="bg-transparent w-full outline-none font-normal"
+              />
+              <button type="submit">
+                <img
+                  src={searchIcon}
+                  alt="search"
+                  className="scale-110 md:scale-125"
+                />
+              </button>
+            </form>
+          </div>
 
           <div className={linkDivStyle}>
             <Link to="/products" className={linkStyle}>
