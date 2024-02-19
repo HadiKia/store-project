@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useProducts } from "../context/ProductContext";
 import { useQuery } from "../context/QueryContext";
+import { filterProducts, searchProducts } from "../helpers/helper";
 
 import Card from "../components/Card";
 
@@ -25,7 +26,10 @@ function ProductsPage() {
   }, [products]);
 
   useEffect(() => {
-    console.log(query);
+    let finalProducts = searchProducts(products, query.search);
+    finalProducts = filterProducts(finalProducts, query.category);
+
+    setDisplayed(finalProducts);
   }, [query]);
 
   const categoryHandler = (event) => {
@@ -52,7 +56,7 @@ function ProductsPage() {
           <div className="w-full md:w-80 xl:w-96 text-[#000C22] md:sticky top-[210px]">
             <ul className={ulStyle} onClick={categoryHandler}>
               <li className={liStyle}>
-                ALL
+                All
                 <img src={chevronIcon} alt="chevron" />
               </li>
               <li className={liStyle}>
@@ -68,7 +72,7 @@ function ProductsPage() {
                 <img src={chevronIcon} alt="chevron" />
               </li>
               <li className={liStyle}>
-                WOMAN'S CLOTHING
+                WOMEN'S CLOTHING
                 <img src={chevronIcon} alt="chevron" />
               </li>
             </ul>
