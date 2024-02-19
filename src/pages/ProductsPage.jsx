@@ -61,7 +61,7 @@ function ProductsPage() {
       <div className="container mx-auto px-5 ">
         <div className="flex flex-col md:flex-row items-start justify-between gap-x-10 gap-y-8">
           {/* sidebar */}
-          <div className="w-full md:w-80 xl:w-96 text-[#000C22] md:sticky top-[210px]">
+          <div className="w-full md:w-96 xl:w-full xl:max-w-sm text-[#000C22] md:sticky md:top-[200px] xl:top-[215px]">
             <ul className={ulStyle} onClick={categoryHandler}>
               <li className={liStyle}>
                 All
@@ -87,7 +87,7 @@ function ProductsPage() {
           </div>
 
           {/* products */}
-          <div className="w-full grid grid-cols-2 lg:grid-cols-3 border-l border-t rounded overflow-hidden">
+          <div className="w-full grid grid-cols-2 lg:grid-cols-3 border-l rounded overflow-hidden">
             {!displayed.length && <Loader />}
             {displayed.map((product) => (
               <Card key={product.id} data={product} />

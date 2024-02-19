@@ -64,14 +64,14 @@ function Header() {
           <div className="flex-1 pt-3 md:pt-0 mb-4">
             <form
               onSubmit={searchHandler}
-              className="bg-[#F2F2F2] max-w-sm py-3 rounded-lg px-4 flex items-center gap-x-3 xl:gap-x-3.5"
+              className="bg-[#F2F2F2] max-w-[390px] py-3 rounded-lg px-4 flex items-center gap-x-3 xl:gap-x-3.5"
             >
               <input
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value.toLowerCase().trim())}
                 placeholder="Search"
-                className="bg-transparent w-full outline-none font-normal"
+                className="bg-transparent w-full outline-none placeholder:font-medium font-normal"
               />
               <button type="submit">
                 <img
