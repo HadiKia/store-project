@@ -3,6 +3,7 @@ import Card from "../components/Card";
 
 import topSection from "../assets/top-section.png";
 import brands from "../assets/brands.png";
+import Loader from "../components/Loader";
 
 function ProductsPage() {
   const products = useProducts();
@@ -24,8 +25,8 @@ function ProductsPage() {
           <div className="w-full md:w-fit">sidebar Lorem, sidebar Lorem, ipssdfsdfsfum dolor sit sdfdsfsf</div>
 
           {/* products */}
-          <div className="w-full grid grid-cols-2 lg:grid-cols-3 border rounded-xl overflow-hidden">
-            {!products.length && <p>Loading...</p>}
+          <div className="w-full grid grid-cols-2 lg:grid-cols-3 border-l border-t rounded overflow-hidden">
+            {!products.length && <Loader />}
             {products.map((product) => (
              <Card key={product.id} data={product}/>
             ))}
