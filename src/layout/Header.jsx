@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useQuery } from "../context/QueryContext";
+
 import { Link } from "react-router-dom";
 
 import saleBanner from "../assets/sale-banner.png";
@@ -20,11 +22,12 @@ const linkDivStyle = "hidden md:flex items-center gap-x-3 lg:gap-x-7";
 const linkStyle = "hover:text-[#491E4B] duration-300 cursor-pointer pt-3 pb-6";
 
 function Header() {
+  const { setQuery } = useQuery();
   const [search, setSearch] = useState("");
 
   const searchHandler = (event) => {
     event.preventDefault();
-    console.log(search);
+    setQuery((query) => ({ ...query, search }));
   };
 
   return (

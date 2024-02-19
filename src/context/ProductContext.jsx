@@ -5,6 +5,7 @@ const ProductContext = createContext();
 
 function ProductProvider({ children }) {
   const [products, setProducts] = useState([]);
+  const [query, setQuery] = useState({});
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -19,15 +20,15 @@ function ProductProvider({ children }) {
   }, []);
 
   return (
-    <ProductContext.Provider value={products}>
+    <ProductContext.Provider value={{ products, query, setQuery }}>
       {children}
     </ProductContext.Provider>
   );
 }
 
 const useProducts = () => {
-  const products = useContext(ProductContext);
-  return products;
+  const { products, query, setQuery } = useContext(ProductContext);
+  return { products, query, setQuery };
 };
 
 export default ProductProvider;

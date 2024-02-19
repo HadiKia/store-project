@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
 import { useProducts } from "../context/ProductContext";
+import { useQuery } from "../context/QueryContext";
+
 import Card from "../components/Card";
 
 import topSection from "../assets/top-section.png";
@@ -13,13 +16,23 @@ const liStyle =
   "flex items-center justify-between border-t text-sm md:text-base font-medium px-4 md:px-5 py-2.5 md:py-4 cursor-pointer";
 
 function ProductsPage() {
-  const products = useProducts();
+  const { products } = useProducts();
+  const { query, setQuery } = useQuery();
+  const [displayed, setDisplayed] = useState([]);
+
+  useEffect(() => {
+    setDisplayed(products);
+  }, [products]);
+
+  useEffect(() => {
+    console.log(query);
+  }, [query]);
 
   const categoryHandler = (event) => {
     const { tagName } = event.target;
     const category = event.target.innerText.toLowerCase();
     if (tagName !== "LI") return;
-    console.log(category);
+    setQuery((query) => ({ ...query, category }));
   };
 
   return (
@@ -63,8 +76,8 @@ function ProductsPage() {
 
           {/* products */}
           <div className="w-full grid grid-cols-2 lg:grid-cols-3 border-l border-t rounded overflow-hidden">
-            {!products.length && <Loader />}
-            {products.map((product) => (
+            {!displayed.length && <Loader />}
+            {displayed.map((product) => (
               <Card key={product.id} data={product} />
             ))}
           </div>
