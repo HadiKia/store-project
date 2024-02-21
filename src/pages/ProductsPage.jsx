@@ -48,7 +48,7 @@ function ProductsPage() {
       </div>
 
       <div className="container mx-auto px-5 ">
-        <div className="flex flex-col md:flex-row items-start justify-between gap-x-10 gap-y-8">
+        <div className="flex flex-col md:flex-row items-start justify-between gap-x-10 lg:gap-x-12 gap-y-8">
           {/* sidebar */}
           <Sidebar />
 
