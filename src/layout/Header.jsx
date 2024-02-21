@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "../context/QueryContext";
 import { createQueryObject } from "../helpers/helper";
 
@@ -23,13 +23,17 @@ const linkDivStyle = "hidden md:flex items-center gap-x-3 lg:gap-x-7";
 const linkStyle = "hover:text-[#491E4B] duration-300 cursor-pointer pt-3 pb-6";
 
 function Header() {
-  const { setQuery } = useQuery();
+  const { query, setQuery } = useQuery();
   const [search, setSearch] = useState("");
 
   const searchHandler = (event) => {
     event.preventDefault();
     setQuery((query) => createQueryObject(query, { search }));
   };
+
+  useEffect(() => {
+    setSearch(query.search || "");
+  }, [query]);
 
   return (
     <div className="sticky top-0 bg-white z-10 shadow-xl shadow-[#00000010]">
