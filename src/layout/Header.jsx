@@ -37,7 +37,7 @@ function Header() {
   }, [query]);
 
   return (
-    <div className="sticky top-0 bg-white z-10 shadow-xl shadow-[#00000010]">
+    <div className="sticky top-0 bg-white z-20 shadow-xl shadow-[#00000008]">
       <Link to="/products">
         <img src={saleBanner} alt="banner" className="hidden lg:block w-full" />
       </Link>

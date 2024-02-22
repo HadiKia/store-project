@@ -7,7 +7,7 @@ import chevron from "../assets/chevronDown.svg";
 const bgMenu =
   "absolute inset-0 min-h-screen  bg-black bg-opacity-60 backdrop-blur-sm";
 const ulStyle =
-  "absolute  inset-0 w-[15em] min-h-screen  duration-500 flex flex-col gap-y-2 bg-white overflow-hidden text-[#000C22]";
+  "absolute inset-0 w-[15em] min-h-screen  duration-500 flex flex-col gap-y-2 bg-white overflow-hidden text-[#000C22]";
 const liStyle = "flex items-center justify-between px-4 py-2 text-sm  ";
 const liActiveStyle = `${liStyle} text-[#491E4B] font-semibold`;
 const hamburgerBoxStyle =
