@@ -9,6 +9,7 @@ import bagIcon from "../assets/bag2.svg";
 import calendarIcon from "../assets/calendar.svg";
 import delivery from "../assets/delivery.png";
 import shipped from "../assets/shipped.png";
+import { useCart } from "../context/CartContext";
 
 // styles
 const containerStyle =
@@ -35,42 +36,45 @@ const uspImageStyle = "w-9 md:w-fit";
 
 function DetailsPage() {
   const { id } = useParams();
-  const productDetails = useProductDetails(+id);
+  const data = useProductDetails(+id);
 
-  if (!productDetails) return <Loader />;
+  const [state, dispatch] = useCart();
+
+  const clickHandler = () => {
+    dispatch({ type: "add", payload: data });
+  };
+
+  if (!data) return <Loader />;
 
   return (
     <div className={containerStyle}>
       <div className={breadcrumbsDivStyle}>
         <Link to="/products">SHOP</Link>
         <img src={arrow} alt="arrow" />
-        <Link to={`/products?category=${productDetails.category}`}>
-          {productDetails.category.toUpperCase()}
+        <Link to={`/products?category=${data.category}`}>
+          {data.category.toUpperCase()}
         </Link>
         <img src={arrow} alt="arrow" />
-        <span className="opacity-50 leading-5">
-          {productDetails.title.toUpperCase()}
-        </span>
+        <span className="opacity-50 leading-5">{data.title.toUpperCase()}</span>
       </div>
 
       <div className={mainDivStyle}>
         <div className={imgDivStyle}>
           <img
-            src={productDetails.image}
-            alt={productDetails.title}
+            src={data.image}
+            alt={data.title}
             className="h-80 lg:w-full lg:h-fit"
           />
         </div>
 
         <div className="md:w-96 xl:w-full xl:max-w-md md:sticky md:top-56">
-          <p className={categoryStyle}>
-            {productDetails.category.toUpperCase()}
-          </p>
-          <h2 className={titleStyle}>{productDetails.title.toUpperCase()}</h2>
+          <p className={categoryStyle}>{data.category.toUpperCase()}</p>
+          <h2 className={titleStyle}>{data.title.toUpperCase()}</h2>
 
           <div className={buttonBoxStyle}>
-            <p className={priceStyle}>{productDetails.price} $</p>
-            <button className={buttonStyle}>
+            <p className={priceStyle}>{data.price} $</p>
+
+            <button className={buttonStyle} onClick={clickHandler}>
               <img src={bagIcon} alt="bag" className={buttonIconStyle} />
               ADD TO CART
             </button>
@@ -95,7 +99,7 @@ function DetailsPage() {
           <div>
             <DisclosureItem
               title="Product description"
-              description={productDetails.description}
+              description={data.description}
             />
             <DisclosureItem
               title="Delivery"
