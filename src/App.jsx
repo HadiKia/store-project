@@ -9,25 +9,28 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import PageNotFound from "./pages/404";
 import ProductProvider from "./context/ProductContext";
 import QueryProvider from "./context/QueryContext";
+import CartProvider from "./context/CartContext";
 
 function App() {
   return (
-    <ProductProvider>
-      <QueryProvider>
-        <Layout>
-          <Routes>
-            <Route index element={<Navigate to="/products" replace />} />
-            <Route path="/products" element={<ProductsPage />} />
-            <Route path="/products/:id" element={<DetailsPage />} />
-            <Route path="/checkout" element={<CheckoutPage />} />
-            <Route path="/help-center" element={<HelpCenter />} />
-            <Route path="/contact-us" element={<ContactUs />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/*" element={<PageNotFound />} />
-          </Routes>
-        </Layout>
-      </QueryProvider>
-    </ProductProvider>
+    <CartProvider>
+      <ProductProvider>
+        <QueryProvider>
+          <Layout>
+            <Routes>
+              <Route index element={<Navigate to="/products" replace />} />
+              <Route path="/products" element={<ProductsPage />} />
+              <Route path="/products/:id" element={<DetailsPage />} />
+              <Route path="/checkout" element={<CheckoutPage />} />
+              <Route path="/help-center" element={<HelpCenter />} />
+              <Route path="/contact-us" element={<ContactUs />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/*" element={<PageNotFound />} />
+            </Routes>
+          </Layout>
+        </QueryProvider>
+      </ProductProvider>
+    </CartProvider>
   );
 }
 
