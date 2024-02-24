@@ -39,9 +39,10 @@ function DetailsPage() {
   const data = useProductDetails(+id);
 
   const [state, dispatch] = useCart();
+  console.log(state)
 
   const clickHandler = () => {
-    dispatch({ type: "add", payload: data });
+    dispatch({ type: "ADD_ITEM", payload: data });
   };
 
   if (!data) return <Loader />;
