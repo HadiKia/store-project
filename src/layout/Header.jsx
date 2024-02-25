@@ -2,15 +2,16 @@ import { useEffect, useState } from "react";
 import { useQuery } from "../context/QueryContext";
 import { createQueryObject } from "../helpers/helper";
 import MobileMenu from "../components/MobileMenu";
+import { useCart } from "../context/CartContext";
 
 import { Link } from "react-router-dom";
+import { pages } from "../constants/list";
 
 import saleBanner from "../assets/sale-banner.png";
 import saleBanner2 from "../assets/sale-banner-mobile.png";
 import bagIcon from "../assets/bag.svg";
 import chevron from "../assets/chevronDown.svg";
 import searchIcon from "../assets/search.svg";
-import { pages } from "../constants/list";
 
 // styles
 const mainStyle = "sticky top-0 bg-white z-20 shadow-xl shadow-[#00000008]";
@@ -21,7 +22,9 @@ const categoryItemStyle =
   "opacity-40 hover:opacity-100 duration-300 cursor-pointer";
 const topBarTitleStyle = "text-[#000C22] text-2xl lg:text-3xl font-bold";
 const cartLinkStyle =
-  "bg-[#F2F2F2] grid place-items-center w-[46px] h-[46px] rounded-full";
+  "relative bg-[#F2F2F2] grid place-items-center w-[46px] h-[46px] rounded-full";
+const counterStyle =
+  "absolute top-2.5 right-2 md:right-1.5 bg-[#491E4B] text-white rounded-full text-[10px] md:text-xs font-medium px-[5px] text-center";
 const sectionStyle =
   "flex items-center justify-between md:gap-x-3 lg:gap-x-10 text-[#000C22] font-medium text-sm xl:text-lg";
 const searchBoxStyle =
@@ -39,6 +42,7 @@ const infoStyle = "flex items-center gap-x-1 lg:gap-x-2 pl-2 lg:pl-5";
 function Header() {
   const { query, setQuery } = useQuery();
   const [search, setSearch] = useState("");
+  const [state] = useCart();
 
   const searchHandler = (event) => {
     event.preventDefault();
@@ -71,6 +75,9 @@ function Header() {
           <div className="flex-1 flex justify-end gap-x-2">
             <Link to="/checkout" className={cartLinkStyle}>
               <img src={bagIcon} />
+              {!!state.itemsCounter && (
+                <span className={counterStyle}>{state.itemsCounter}</span>
+              )}
             </Link>
             <div className="md:hidden">
               <MobileMenu />

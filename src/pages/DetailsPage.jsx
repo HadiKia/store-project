@@ -2,6 +2,8 @@ import { Link, useParams } from "react-router-dom";
 import { useProductDetails } from "../context/ProductContext";
 import Loader from "../components/Loader";
 import DisclosureItem from "../components/Disclosure";
+import { useCart } from "../context/CartContext";
+import { productQuantity } from "../helpers/helper";
 
 // icons
 import arrow from "../assets/arrowRight.svg";
@@ -9,7 +11,9 @@ import bagIcon from "../assets/bag2.svg";
 import calendarIcon from "../assets/calendar.svg";
 import delivery from "../assets/delivery.png";
 import shipped from "../assets/shipped.png";
-import { useCart } from "../context/CartContext";
+import trashIcon from "../assets/trash.svg";
+import plusIcon from "../assets/plus.svg";
+import minusIcon from "../assets/minus.svg";
 
 // styles
 const containerStyle =
@@ -22,11 +26,11 @@ const imgDivStyle =
 const categoryStyle = "opacity-50 text-xs mb-1 lg:text-sm";
 const titleStyle = "text-lg mb-5 md:mb-1 font-semibold md:text-xl lg:text-3xl";
 const priceStyle = "md:mb-11 lg:text-xl";
-const buttonBoxStyle =
-  "fixed left-0 right-0 bottom-0 bg-white px-4 md:px-0 py-3 shadow-[0_-10px_20px_rgba(0,0,0,0.06)] md:shadow-none z-10 md:relative flex items-center justify-between md:flex-col md:items-start md:mb-1";
-const buttonStyle =
+const addCartBoxStyle =
+  "fixed left-0 right-0 bottom-0 bg-white px-4 md:px-0 py-3 shadow-[0_-20px_20px_rgba(0,0,0,0.06)] md:shadow-none z-10 md:relative flex items-center justify-between md:flex-col md:items-start md:mb-1";
+const addCartButtonStyle =
   "flex items-center justify-center gap-x-2 bg-[#491E4B] text-[#EEE9DC] px-5 py-3 rounded-md text-sm md:w-full md:rounded-full ";
-const buttonIconStyle = "scale-90 md:scale-100";
+const bagIconStyle = "scale-90 md:scale-100";
 const subscribeStyle =
   "flex items-center gap-x-2 justify-center text-[10px] whitespace-nowrap opacity-50 font-semibold mb-6 md:text-xs lg:mb-9";
 const uspStyle = "flex items-center justify-center gap-x-4 mb-5 md:mb-10";
@@ -40,8 +44,10 @@ function DetailsPage() {
 
   const [state, dispatch] = useCart();
 
-  const clickHandler = () => {
-    dispatch({ type: "ADD_ITEM", payload: data });
+  const quantity = productQuantity(state, data.id);
+
+  const clickHandler = (type) => {
+    dispatch({ type, payload: data });
   };
 
   if (!data) return <Loader />;
@@ -71,13 +77,39 @@ function DetailsPage() {
           <p className={categoryStyle}>{data.category.toUpperCase()}</p>
           <h2 className={titleStyle}>{data.title.toUpperCase()}</h2>
 
-          <div className={buttonBoxStyle}>
+          <div className={addCartBoxStyle}>
             <p className={priceStyle}>{data.price} $</p>
 
-            <button className={buttonStyle} onClick={clickHandler}>
-              <img src={bagIcon} alt="bag" className={buttonIconStyle} />
-              ADD TO CART
-            </button>
+            <div className="md:w-full flex items-center gap-x-5 md:justify-center md:gap-x-6">
+              {quantity === 1 && (
+                <button onClick={() => clickHandler("REMOVE_ITEM")}>
+                  <img
+                    src={trashIcon}
+                    alt="delete"
+                    className="w-6 opacity-40"
+                  />
+                </button>
+              )}
+              {quantity > 1 && (
+                <button onClick={() => clickHandler("DECREASE")}>
+                  <img src={minusIcon} alt="-" className="my-[7px]" />
+                </button>
+              )}
+              {!!quantity && <span>{quantity}</span>}
+              {quantity === 0 ? (
+                <button
+                  className={addCartButtonStyle}
+                  onClick={() => clickHandler("ADD_ITEM")}
+                >
+                  <img src={bagIcon} alt="bag" className={bagIconStyle} />
+                  ADD TO CART
+                </button>
+              ) : (
+                <button onClick={() => clickHandler("INCREASE")}>
+                  <img src={plusIcon} alt="+" className="my-[7px]" />
+                </button>
+              )}
+            </div>
           </div>
 
           <div className={subscribeStyle}>

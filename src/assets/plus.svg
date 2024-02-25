@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="none">
+    <path fill="#EEE9DC" fill-rule="evenodd" d="M4 30a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h22a4 4 0 0 1 4 4v22a4 4 0 0 1-4 4H4Z" clip-rule="evenodd"/>
+    <path stroke="#491E4B" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 15h12M15 9v12"/>
+</svg>
