@@ -86,7 +86,7 @@ function DetailsPage() {
                   <img
                     src={trashIcon}
                     alt="delete"
-                    className="w-6 opacity-40"
+                    className="w-6 opacity-15"
                   />
                 </button>
               )}
