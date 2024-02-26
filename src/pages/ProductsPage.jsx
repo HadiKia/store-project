@@ -3,6 +3,7 @@ import { useProducts } from "../context/ProductContext";
 import { useQuery } from "../context/QueryContext";
 import { useSearchParams } from "react-router-dom";
 
+import Search from "../components/Search";
 import Sidebar from "../components/Sidebar";
 import Card from "../components/Card";
 import Loader from "../components/Loader";
@@ -38,7 +39,7 @@ function ProductsPage() {
 
   return (
     <>
-      <div className="grid place-items-center mb-5 md:mb-10">
+      <div className="grid place-items-center mb-2 ">
         <img src={topSection} alt="section" className="w-full" />
         <img
           src={brands}
@@ -48,6 +49,11 @@ function ProductsPage() {
       </div>
 
       <div className="container mx-auto px-5 ">
+        {/* search */}
+        <div className="md:hidden mb-6">
+          <Search />
+        </div>
+
         <div className="flex flex-col md:flex-row items-start justify-between gap-x-10 lg:gap-x-12 gap-y-8">
           {/* sidebar */}
           <Sidebar />

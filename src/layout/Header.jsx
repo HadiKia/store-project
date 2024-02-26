@@ -1,6 +1,3 @@
-import { useEffect, useState } from "react";
-import { useQuery } from "../context/QueryContext";
-import { createQueryObject } from "../helpers/helper";
 import MobileMenu from "../components/MobileMenu";
 import { useCart } from "../context/CartContext";
 
@@ -11,7 +8,7 @@ import saleBanner from "../assets/sale-banner.png";
 import saleBanner2 from "../assets/sale-banner-mobile.png";
 import bagIcon from "../assets/bag.svg";
 import chevron from "../assets/chevronDown.svg";
-import searchIcon from "../assets/search.svg";
+import Search from "../components/Search";
 
 // styles
 const mainStyle = "sticky top-0 bg-white z-20 shadow-xl shadow-[#00000008]";
@@ -27,10 +24,6 @@ const counterStyle =
   "absolute top-2.5 right-2 md:right-1.5 bg-[#491E4B] text-white rounded-full text-[10px] md:text-xs font-medium px-[5px] text-center";
 const sectionStyle =
   "flex items-center justify-between md:gap-x-3 lg:gap-x-10 text-[#000C22] font-medium text-sm xl:text-lg";
-const searchBoxStyle =
-  "bg-[#F2F2F2] xl:max-w-[390px] py-3 rounded-lg px-4 flex items-center gap-x-3 xl:gap-x-3.5";
-const inputStyle =
-  "bg-transparent w-full outline-none placeholder:font-medium font-normal";
 const linkDivStyle = "hidden md:flex items-center gap-x-3 lg:gap-x-7";
 const linkStyle = "hover:text-[#491E4B] duration-300 cursor-pointer pt-3 pb-6";
 const InfoAndCurrencyBoxStyle =
@@ -40,18 +33,7 @@ const currencyStyle =
 const infoStyle = "flex items-center gap-x-1 lg:gap-x-2 pl-2 lg:pl-5";
 
 function Header() {
-  const { query, setQuery } = useQuery();
-  const [search, setSearch] = useState("");
   const [state] = useCart();
-
-  const searchHandler = (event) => {
-    event.preventDefault();
-    setQuery((query) => createQueryObject(query, { search }));
-  };
-
-  useEffect(() => {
-    setSearch(query.search || "");
-  }, [query]);
 
   return (
     <header className={mainStyle}>
@@ -86,23 +68,8 @@ function Header() {
         </div>
 
         <div className={sectionStyle}>
-          <div className="flex-1 pt-3 md:pt-0 mb-4">
-            <form onSubmit={searchHandler} className={searchBoxStyle}>
-              <input
-                type="text"
-                value={search}
-                onChange={(e) => setSearch(e.target.value.toLowerCase().trim())}
-                placeholder="Search"
-                className={inputStyle}
-              />
-              <button type="submit">
-                <img
-                  src={searchIcon}
-                  alt="search"
-                  className="scale-110 md:scale-125"
-                />
-              </button>
-            </form>
+          <div className="flex-1 hidden md:block pt-3 md:pt-0 mb-4">
+            <Search />
           </div>
 
           <div className={linkDivStyle}>

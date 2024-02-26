@@ -21,7 +21,7 @@ function Sidebar() {
   };
 
   return (
-    <div className="w-full md:w-96 xl:w-full xl:max-w-xs text-[#000C22] md:sticky md:top-[200px] xl:top-[215px]">
+    <div className="w-full md:w-96 xl:w-full xl:max-w-xs text-[#000C22] md:sticky md:top-[200px] lg:top-[180px] xl:top-[200px] 2xl:top-[220px]">
       <ul className={ulStyle} onClick={categoryHandler}>
         {categories.map((item) => (
           <li

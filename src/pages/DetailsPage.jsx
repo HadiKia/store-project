@@ -27,15 +27,15 @@ const categoryStyle = "opacity-50 text-xs mb-1 lg:text-sm";
 const titleStyle = "text-lg mb-5 md:mb-1 font-semibold md:text-xl lg:text-3xl";
 const priceStyle = "md:mb-11 lg:text-xl";
 const addCartBoxStyle =
-  "fixed left-0 right-0 bottom-0 bg-white px-4 md:px-0 py-3 shadow-[0_-20px_20px_rgba(0,0,0,0.06)] md:shadow-none z-10 md:relative flex items-center justify-between md:flex-col md:items-start md:mb-1";
+  "fixed left-0 right-0 bottom-0 bg-white px-4 md:px-0 py-3 shadow-[0_-20px_25px_rgba(0,0,0,0.05)] md:shadow-none z-10 md:relative flex items-center justify-between md:flex-col md:items-start md:mb-1";
 const addCartButtonStyle =
   "flex items-center justify-center gap-x-2 bg-[#491E4B] text-[#EEE9DC] px-5 py-3 rounded-md text-sm md:w-full md:rounded-full ";
 const bagIconStyle = "scale-90 md:scale-100";
 const subscribeStyle =
   "flex items-center gap-x-2 justify-center text-[10px] whitespace-nowrap opacity-50 font-semibold mb-6 md:text-xs lg:mb-9";
-const uspStyle = "flex items-center justify-center gap-x-4 mb-5 md:mb-10";
+const uspStyle = "flex items-center justify-center gap-x-4 mb-5 md:mb-10 px-2";
 const uspItemStyle =
-  "flex items-center gap-x-1 text-xs md:gap-x-2 lg:text-base";
+  "flex items-center gap-x-1 text-xs md:gap-x-2 xl:gap-x-3 lg:text-base";
 const uspImageStyle = "w-9 md:w-fit";
 
 function DetailsPage() {

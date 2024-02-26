@@ -7,7 +7,7 @@ import BasketCard from "../components/BasketCard";
 
 // styles
 const containerStyle =
-  "container mx-auto px-4 text-[#000C22] font-medium mt-8 md:mt-10";
+  "container mx-auto px-4 text-[#000C22] font-medium mt-8 md:mt-[42px] lg:mt-10";
 const breadcrumbsDivStyle =
   "flex items-center flex-wrap text-xs gap-2 mb-5 md:mb-6 lg:text-sm";
 const counterStyle =
@@ -36,31 +36,37 @@ function CheckoutPage() {
       </div>
 
       <div className={mainDivStyle}>
-        <div className="w-full">
-          <h2 className={h2Style}>SHOPPING CART</h2>
-          <table className={tableStyle}>
-            <thead>
-              <tr className={trStyle}>
-                <th className={thStyle}>PRODUCT</th>
-                <th className={thStyle}>AMOUNT</th>
-                <th className={`${thStyle} text-right`}>PRICE(USD)</th>
-              </tr>
-            </thead>
-            <tbody className="">
-              {state.selectedItems.map((product) => (
-                <BasketCard
-                  key={product.id}
-                  data={product}
-                  clickHandler={clickHandler}
-                />
-              ))}
-            </tbody>
-          </table>
-        </div>
+        {!state.itemsCounter ? (
+          <p>Empty</p>
+        ) : (
+          <>
+            <div className="w-full">
+              <h2 className={h2Style}>SHOPPING CART</h2>
+              <table className={tableStyle}>
+                <thead>
+                  <tr className={trStyle}>
+                    <th className={thStyle}>PRODUCT</th>
+                    <th className={thStyle}>AMOUNT</th>
+                    <th className={`${thStyle} text-right`}>PRICE(USD)</th>
+                  </tr>
+                </thead>
+                <tbody className="">
+                  {state.selectedItems.map((product) => (
+                    <BasketCard
+                      key={product.id}
+                      data={product}
+                      clickHandler={clickHandler}
+                    />
+                  ))}
+                </tbody>
+              </table>
+            </div>
 
-        <div className="w-full md:max-w-xs lg:max-w-sm xl:max-w-md md:sticky md:top-56">
-          checkout
-        </div>
+            <div className="w-full md:max-w-xs lg:max-w-sm xl:max-w-md md:sticky md:top-56">
+              checkout
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
