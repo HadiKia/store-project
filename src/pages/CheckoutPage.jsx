@@ -5,6 +5,7 @@ import arrow from "../assets/arrowRight.svg";
 import { Link } from "react-router-dom";
 import BasketCard from "../components/BasketCard";
 import BasketSidebar from "../components/BasketSidebar";
+import EmptyBasket from "../components/EmptyBasket";
 
 // styles
 const containerStyle =
@@ -25,6 +26,8 @@ function CheckoutPage() {
 
   const clickHandler = (type, payload) => dispatch({ type, payload });
 
+  if (!state.itemsCounter) return <EmptyBasket />;
+
   return (
     <div className={containerStyle}>
       <div className={breadcrumbsDivStyle}>
@@ -37,37 +40,31 @@ function CheckoutPage() {
       </div>
 
       <div className={mainDivStyle}>
-        {!state.itemsCounter ? (
-          <p>Empty</p>
-        ) : (
-          <>
-            <div className="w-full">
-              <h2 className={h2Style}>SHOPPING CART</h2>
-              <table className={tableStyle}>
-                <thead>
-                  <tr className={trStyle}>
-                    <th className={thStyle}>PRODUCT</th>
-                    <th className={thStyle}>AMOUNT</th>
-                    <th className={`${thStyle} text-right`}>PRICE(USD)</th>
-                  </tr>
-                </thead>
-                <tbody className="">
-                  {state.selectedItems.map((product) => (
-                    <BasketCard
-                      key={product.id}
-                      data={product}
-                      clickHandler={clickHandler}
-                    />
-                  ))}
-                </tbody>
-              </table>
-            </div>
+        <div className="w-full">
+          <h2 className={h2Style}>SHOPPING CART</h2>
+          <table className={tableStyle}>
+            <thead>
+              <tr className={trStyle}>
+                <th className={thStyle}>PRODUCT</th>
+                <th className={thStyle}>AMOUNT</th>
+                <th className={`${thStyle} text-right`}>PRICE(USD)</th>
+              </tr>
+            </thead>
+            <tbody className="">
+              {state.selectedItems.map((product) => (
+                <BasketCard
+                  key={product.id}
+                  data={product}
+                  clickHandler={clickHandler}
+                />
+              ))}
+            </tbody>
+          </table>
+        </div>
 
-            <div className="w-full md:max-w-xs lg:max-w-sm xl:max-w-md md:sticky md:top-56">
-              <BasketSidebar state={state} clickHandler={clickHandler} />
-            </div>
-          </>
-        )}
+        <div className="w-full md:max-w-xs lg:max-w-sm xl:max-w-md md:sticky md:top-56">
+          <BasketSidebar state={state} clickHandler={clickHandler} />
+        </div>
       </div>
     </div>
   );
