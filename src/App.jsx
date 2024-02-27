@@ -1,5 +1,6 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import Layout from "./layout/Layout";
+import ScrollToTop from "./helpers/ScrollToTop";
 import ProductsPage from "./pages/ProductsPage";
 import DetailsPage from "./pages/DetailsPage";
 import CheckoutPage from "./pages/CheckoutPage";
@@ -17,6 +18,7 @@ function App() {
       <ProductProvider>
         <QueryProvider>
           <Layout>
+            <ScrollToTop />
             <Routes>
               <Route index element={<Navigate to="/products" replace />} />
               <Route path="/products" element={<ProductsPage />} />
