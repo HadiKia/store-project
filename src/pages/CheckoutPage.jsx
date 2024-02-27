@@ -4,6 +4,7 @@ import { useCart } from "../context/CartContext";
 import arrow from "../assets/arrowRight.svg";
 import { Link } from "react-router-dom";
 import BasketCard from "../components/BasketCard";
+import BasketSidebar from "../components/BasketSidebar";
 
 // styles
 const containerStyle =
@@ -63,7 +64,7 @@ function CheckoutPage() {
             </div>
 
             <div className="w-full md:max-w-xs lg:max-w-sm xl:max-w-md md:sticky md:top-56">
-              checkout
+              <BasketSidebar state={state} clickHandler={clickHandler} />
             </div>
           </>
         )}
