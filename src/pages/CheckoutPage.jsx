@@ -33,7 +33,9 @@ function CheckoutPage() {
       <div className={breadcrumbsDivStyle}>
         <Link to="/products">SHOP</Link>
         <img src={arrow} alt="arrow" />
-        <Link to="/checkout">CART</Link>
+        <Link to="/checkout" className="opacity-50">
+          CART
+        </Link>
         {!!state.itemsCounter && (
           <span className={counterStyle}>{state.itemsCounter}</span>
         )}
