@@ -8,20 +8,21 @@ import {
 import arrowIcon from "../assets/arrow.svg";
 
 // styles
-const bannerDivStyle = "text-center bg-[#EEE9DC] px-5 py-10 md:py-20 lg:py-24";
-const h3Style = "text-4xl md:text-5xl font-medium mb-3";
-const bannerPStyle = "text-xs leading-5 md:text-sm lg:text-base";
-const containerStyle = "container mx-auto px-5 my-10 md:my-14 lg:my-20";
-const contentBoxStyle =
+export const bannerDivStyle =
+  "text-center bg-[#EEE9DC] px-5 py-10 md:py-20 lg:py-24";
+export const h3Style = "text-4xl md:text-5xl font-medium mb-3";
+export const bannerPStyle = "text-xs leading-5 md:text-sm lg:text-base";
+export const containerStyle = "container mx-auto px-5 my-10 md:my-14 lg:my-20";
+export const contentBoxStyle =
   "flex flex-col md:flex-row md:items-start md:justify-between gap-y-4 lg:gap-x-14 pb-8 md:pb-11 mb-8 md:mb-11 border-b border-[#000D21] border-opacity-5";
-const h5Style = "font-medium text-2xl flex-1 max-w-lg md:text-3xl";
-const contentStyle =
-  "flex-1 flex flex-col gap-y-3 md:gap-y-5 text-xs leading-5 opacity-80 md:text-base";
-const emailBoxStyle =
+export const h5Style = "font-medium text-2xl flex-1 max-w-lg md:text-3xl";
+export const contentStyle =
+  "flex-1 flex flex-col gap-y-3 md:gap-y-5 text-xs leading-5 opacity-80 md:text-base ";
+export const emailBoxStyle =
   "bg-[#F2F2F3] flex flex-col md:flex-row md:items-center justify-between gap-3 px-4 py-5 rounded-md text-xs font-medium leading-5 md:text-sm md:px-8 md:py-6 lg:py-8 lg:text-lg lg:px-10";
-const emailBoxPStyle = "text-sm md:text-base lg:text-2xl";
-const emailLinkStyle = "flex items-center gap-x-1 md:gap-x-2 lg:gap-x-3";
-const arrowStyle = "scale-[0.65] md:scale-75 lg:scale-95";
+export const emailBoxPStyle = "text-sm md:text-base lg:text-2xl";
+export const emailLinkStyle = "flex items-center gap-x-1 md:gap-x-2 lg:gap-x-3";
+export const arrowStyle = "scale-[0.65] md:scale-75 lg:scale-95";
 
 function PrivacyPolicy() {
   return (

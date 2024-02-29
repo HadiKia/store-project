@@ -4,7 +4,7 @@ import plusIcon from "../assets/plus2.svg";
 
 const disclosureBoxStyle = "border-b";
 const disclosureTitleStyle =
-  "flex items-center justify-between w-full p-2 md:px-3 rounded-md md:rounded-lg lg:text-lg";
+  "flex items-center justify-between w-full p-2 md:px-3 rounded-md md:rounded-lg lg:text-lg text-left";
 const activeStyle = `${disclosureTitleStyle} bg-[#F7F8F8]`;
 const disclosureDescriptionStyle =
   " text-xs px-4 md:px-5 leading-5 md:leading-6 opacity-70 pb-2 bg-[#F7F8F8] lg:text-sm lg:leading-6";
