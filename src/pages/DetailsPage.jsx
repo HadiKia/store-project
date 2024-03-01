@@ -41,16 +41,15 @@ const uspImageStyle = "w-9 md:w-fit";
 function DetailsPage() {
   const { id } = useParams();
   const data = useProductDetails(+id);
-
   const [state, dispatch] = useCart();
+
+  if (!data) return <Loader />;
 
   const quantity = productQuantity(state, data.id);
 
   const clickHandler = (type) => {
     dispatch({ type, payload: data });
   };
-
-  if (!data) return <Loader />;
 
   return (
     <div className={containerStyle}>
