@@ -1,7 +1,6 @@
 import Disclosure from "../components/Disclosure";
 
 import searchIcon from "../assets/search.svg";
-import arrowIcon from "../assets/arrow.svg";
 
 // styles
 import {
@@ -12,11 +11,8 @@ import {
   contentBoxStyle,
   h5Style,
   contentStyle,
-  emailBoxStyle,
-  emailBoxPStyle,
-  emailLinkStyle,
-  arrowStyle,
 } from "./PrivacyPolicy";
+import ContactEmail from "../components/ContactEmail";
 
 function HelpCenter() {
   return (
@@ -155,18 +151,7 @@ function HelpCenter() {
           </div>
         </div>
 
-        <div className="pb-14 md:pb-20">
-          <div className={emailBoxStyle}>
-            <p className={emailBoxPStyle}>
-              Do YOU HAVE AN URGENT QUESTION? <br /> WE WILL HELP YUU SOLVE IT
-              VIA EMAIL
-            </p>
-            <a href="mailto:support@besart.shop" className={emailLinkStyle}>
-              SUPPORT@BESART.SHOP
-              <img src={arrowIcon} alt="arrow" className={arrowStyle} />
-            </a>
-          </div>
-        </div>
+        <ContactEmail />
       </div>
     </div>
   );
