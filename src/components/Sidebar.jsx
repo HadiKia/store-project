@@ -27,7 +27,9 @@ function Sidebar() {
           <li
             key={item.id}
             className={
-              item.type.toLowerCase() === query.category
+              item.id === 1 && !query.category
+                ? selectedStyle
+                : item.type.toLowerCase() === query.category
                 ? selectedStyle
                 : liStyle
             }
