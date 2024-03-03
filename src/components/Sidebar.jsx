@@ -1,4 +1,4 @@
-import { useQuery } from "../context/QueryContext";
+import { useQuery } from "../hooks/useQuery";
 import { createQueryObject } from "../helpers/helper";
 import { categories } from "../constants/list";
 

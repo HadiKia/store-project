@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { useProducts } from "../context/ProductContext";
-import { useQuery } from "../context/QueryContext";
+import { useProducts } from "../hooks/useProducts";
+import { useQuery } from "../hooks/useQuery";
 import { useSearchParams } from "react-router-dom";
+import { useTitle } from "../hooks/useTitle";
 
 import Search from "../components/Search";
 import Sidebar from "../components/Sidebar";
@@ -19,6 +20,8 @@ import brands from "../assets/brands.png";
 import notFoundImage from "../assets/error_404.jpeg";
 
 function ProductsPage() {
+  useTitle("Products");
+
   const { products } = useProducts();
   const { query, setQuery } = useQuery();
   const [displayed, setDisplayed] = useState([]);

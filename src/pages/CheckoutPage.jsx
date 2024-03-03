@@ -1,4 +1,5 @@
-import { useCart } from "../context/CartContext";
+import { useCart } from "../hooks/useCart";
+import { useTitle } from "../hooks/useTitle";
 
 // icons
 import arrow from "../assets/arrowRight.svg";
@@ -22,6 +23,7 @@ const trStyle = "text-xs lg:text-sm opacity-50";
 const thStyle = "pb-2 font-medium";
 
 function CheckoutPage() {
+  useTitle("Cart");
   const [state, dispatch] = useCart();
 
   const clickHandler = (type, payload) => dispatch({ type, payload });

@@ -1,6 +1,6 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState } from "react";
 
-const QueryContext = createContext();
+export const QueryContext = createContext();
 
 function QueryProvider({ children }) {
   const [query, setQuery] = useState({});
@@ -12,10 +12,4 @@ function QueryProvider({ children }) {
   );
 }
 
-const useQuery = () => {
-  const { query, setQuery } = useContext(QueryContext);
-  return { query, setQuery };
-};
-
 export default QueryProvider;
-export { useQuery };

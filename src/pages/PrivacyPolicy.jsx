@@ -1,3 +1,4 @@
+import { useTitle } from "../hooks/useTitle";
 import ContactEmail from "../components/ContactEmail";
 import {
   definitionsOfConcepts,
@@ -19,6 +20,8 @@ export const contentStyle =
   "flex-1 flex flex-col gap-y-3 md:gap-y-5 text-xs leading-5 opacity-80 md:text-base ";
 
 function PrivacyPolicy() {
+  useTitle("Privacy Policy");
+
   return (
     <div className="text-[#000C22]">
       <div className={bannerDivStyle}>

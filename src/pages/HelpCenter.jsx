@@ -1,3 +1,4 @@
+import { useTitle } from "../hooks/useTitle";
 import Disclosure from "../components/Disclosure";
 
 import searchIcon from "../assets/search.svg";
@@ -15,6 +16,8 @@ import {
 import ContactEmail from "../components/ContactEmail";
 
 function HelpCenter() {
+  useTitle("Help Center");
+
   return (
     <div className="text-[#000C22]">
       <div className={`${bannerDivStyle} !relative mb-20 md:mb-24 lg:mb-28`}>

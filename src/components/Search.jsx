@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useQuery } from "../context/QueryContext";
+import { useQuery } from "../hooks/useQuery";
 import { createQueryObject } from "../helpers/helper";
 
 import searchIcon from "../assets/search.svg";

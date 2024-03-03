@@ -1,9 +1,10 @@
 import { Link, useParams } from "react-router-dom";
-import { useProductDetails } from "../context/ProductContext";
+import { useProductDetails } from "../hooks/useProductDetails";
 import Loader from "../components/Loader";
 import DisclosureItem from "../components/Disclosure";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../hooks/useCart";
 import { productQuantity } from "../helpers/helper";
+import { useTitle } from "../hooks/useTitle";
 
 // icons
 import arrow from "../assets/arrowRight.svg";
@@ -44,6 +45,7 @@ function DetailsPage() {
   const [state, dispatch] = useCart();
 
   if (!data) return <Loader />;
+  useTitle(`Products - ${data.title}`);
 
   const quantity = productQuantity(state, data.id);
 

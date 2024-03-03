@@ -1,8 +1,8 @@
+import { useTitle } from "../hooks/useTitle";
 
 function PageNotFound() {
-  return (
-    <div>PageNotFound</div>
-  )
+  useTitle("Not Found");
+  return <div>PageNotFound</div>;
 }
 
-export default PageNotFound
+export default PageNotFound;
