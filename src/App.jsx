@@ -8,14 +8,14 @@ import HelpCenter from "./pages/HelpCenter";
 import ContactUs from "./pages/ContactUs";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import PageNotFound from "./pages/404";
-import ProductProvider from "./context/ProductContext";
+// import ProductProvider from "./context/ProductContext";
+// import CartProvider from "./context/CartContext";
 import QueryProvider from "./context/QueryContext";
-import CartProvider from "./context/CartContext";
 
 function App() {
   return (
-    <CartProvider>
-      <ProductProvider>
+    // <CartProvider>
+      // <ProductProvider>
         <QueryProvider>
           <Layout>
             <ScrollToTop />
@@ -31,8 +31,8 @@ function App() {
             </Routes>
           </Layout>
         </QueryProvider>
-      </ProductProvider>
-    </CartProvider>
+      // </ProductProvider>
+    // </CartProvider>
   );
 }
 

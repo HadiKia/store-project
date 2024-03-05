@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useProductDetails } from "../hooks/useProductDetails";
 import Loader from "../components/Loader";
 import DisclosureItem from "../components/Disclosure";
-import { useCart } from "../hooks/useCart";
+// import { useCart } from "../hooks/useCart";
 import { productQuantity } from "../helpers/helper";
 import { useTitle } from "../hooks/useTitle";
 
@@ -42,15 +42,16 @@ const uspImageStyle = "w-9 md:w-fit";
 function DetailsPage() {
   const { id } = useParams();
   const data = useProductDetails(+id);
-  const [state, dispatch] = useCart();
+  // const [state, dispatch] = useCart();
 
   if (!data) return <Loader />;
   useTitle(`Products - ${data.title}`);
 
-  const quantity = productQuantity(state, data.id);
+  // const quantity = productQuantity(state, data.id);
+  const quantity = 0;
 
   const clickHandler = (type) => {
-    dispatch({ type, payload: data });
+    // dispatch({ type, payload: data });
   };
 
   return (

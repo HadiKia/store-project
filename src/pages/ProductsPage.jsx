@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useProducts } from "../hooks/useProducts";
+// import { useProducts } from "../hooks/useProducts";
 import { useQuery } from "../hooks/useQuery";
 import { useSearchParams } from "react-router-dom";
 import { useTitle } from "../hooks/useTitle";
@@ -22,7 +22,9 @@ import notFoundImage from "../assets/error_404.jpeg";
 function ProductsPage() {
   useTitle("Products");
 
-  const { products } = useProducts();
+  // const { products } = useProducts();
+  const { products } = [];
+
   const { query, setQuery } = useQuery();
   const [displayed, setDisplayed] = useState([]);
 
@@ -64,16 +66,16 @@ function ProductsPage() {
 
           {/* products */}
           <div className="w-full grid grid-cols-2 lg:grid-cols-3 border-l rounded overflow-hidden">
-            {!displayed.length && !query.search && <Loader />}
+            {/* {!displayed.length && !query.search && <Loader />}
             {!displayed.length && query.search && (
               <div className=" py-10 border-y border-r w-full col-span-full grid place-items-center">
                 <img src={notFoundImage} alt="Not found" />
               </div>
-            )}
+            )} */}
 
-            {displayed.map((product) => (
+            {/* {displayed.map((product) => (
               <Card key={product.id} data={product} />
-            ))}
+            ))} */}
           </div>
         </div>
       </div>

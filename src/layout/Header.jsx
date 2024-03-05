@@ -1,5 +1,5 @@
 import MobileMenu from "../components/MobileMenu";
-import { useCart } from "../hooks/useCart";
+// import { useCart } from "../hooks/useCart";
 
 import { Link } from "react-router-dom";
 import { pages } from "../constants/list";
@@ -33,7 +33,7 @@ const currencyStyle =
 const infoStyle = "flex items-center gap-x-1 lg:gap-x-2 pl-2 lg:pl-5";
 
 function Header() {
-  const [state] = useCart();
+  // const [state] = useCart();
 
   return (
     <header className={mainStyle}>
@@ -57,9 +57,9 @@ function Header() {
           <div className="flex-1 flex justify-end gap-x-2">
             <Link to="/checkout" className={cartLinkStyle}>
               <img src={bagIcon} />
-              {!!state.itemsCounter && (
+              {/* {!!state.itemsCounter && (
                 <span className={counterStyle}>{state.itemsCounter}</span>
-              )}
+              )} */}
             </Link>
             <div className="md:hidden">
               <MobileMenu />

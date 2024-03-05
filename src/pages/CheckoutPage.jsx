@@ -1,12 +1,12 @@
-import { useCart } from "../hooks/useCart";
+import BasketCard from "../components/BasketCard";
+import BasketSidebar from "../components/BasketSidebar";
+import EmptyBasket from "../components/EmptyBasket";
+import { Link } from "react-router-dom";
+// import { useCart } from "../hooks/useCart";
 import { useTitle } from "../hooks/useTitle";
 
 // icons
 import arrow from "../assets/arrowRight.svg";
-import { Link } from "react-router-dom";
-import BasketCard from "../components/BasketCard";
-import BasketSidebar from "../components/BasketSidebar";
-import EmptyBasket from "../components/EmptyBasket";
 
 // styles
 const containerStyle =
@@ -24,11 +24,11 @@ const thStyle = "pb-2 font-medium";
 
 function CheckoutPage() {
   useTitle("Cart");
-  const [state, dispatch] = useCart();
+  // const [state, dispatch] = useCart();
 
-  const clickHandler = (type, payload) => dispatch({ type, payload });
+  // const clickHandler = (type, payload) => dispatch({ type, payload });
 
-  if (!state.itemsCounter) return <EmptyBasket />;
+  // if (!state.itemsCounter) return <EmptyBasket />;
 
   return (
     <div className={containerStyle}>
@@ -38,9 +38,9 @@ function CheckoutPage() {
         <Link to="/checkout" className="opacity-50">
           CART
         </Link>
-        {!!state.itemsCounter && (
+        {/* {!!state.itemsCounter && (
           <span className={counterStyle}>{state.itemsCounter}</span>
-        )}
+        )} */}
       </div>
 
       <div className={mainDivStyle}>
@@ -54,20 +54,20 @@ function CheckoutPage() {
                 <th className={`${thStyle} text-right`}>PRICE(USD)</th>
               </tr>
             </thead>
-            <tbody className="">
-              {state.selectedItems.map((product) => (
+            <tbody>
+              {/* {state.selectedItems.map((product) => (
                 <BasketCard
                   key={product.id}
                   data={product}
                   clickHandler={clickHandler}
                 />
-              ))}
+              ))} */}
             </tbody>
           </table>
         </div>
 
         <div className="w-full md:max-w-xs lg:max-w-sm xl:max-w-md md:sticky md:top-56">
-          <BasketSidebar state={state} clickHandler={clickHandler} />
+          {/* <BasketSidebar state={state} clickHandler={clickHandler} /> */}
         </div>
       </div>
     </div>
