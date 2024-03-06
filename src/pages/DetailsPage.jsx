@@ -1,10 +1,10 @@
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useProductDetails } from "../hooks/useProductDetails";
+import { useSelector, useDispatch } from "react-redux";
+import { productQuantity } from "../helpers/helper";
+import { fetchProducts } from "../features/product/productSlice";
 import Loader from "../components/Loader";
 import DisclosureItem from "../components/Disclosure";
-// import { useCart } from "../hooks/useCart";
-import { productQuantity } from "../helpers/helper";
-import { useTitle } from "../hooks/useTitle";
 
 // icons
 import arrow from "../assets/arrowRight.svg";
@@ -41,11 +41,18 @@ const uspImageStyle = "w-9 md:w-fit";
 
 function DetailsPage() {
   const { id } = useParams();
-  const data = useProductDetails(+id);
-  // const [state, dispatch] = useCart();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
+
+  const data = useSelector((store) =>
+    store.product.products.find((i) => i.id === +id)
+  );
 
   if (!data) return <Loader />;
-  useTitle(`Products - ${data.title}`);
+  document.title = data.title;
 
   // const quantity = productQuantity(state, data.id);
   const quantity = 0;
