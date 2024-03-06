@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-// import { useProducts } from "../hooks/useProducts";
+import { useSelector, useDispatch } from "react-redux";
 import { useQuery } from "../hooks/useQuery";
 import { useSearchParams } from "react-router-dom";
 import { useTitle } from "../hooks/useTitle";
+import { fetchProducts } from "../features/product/productSlice";
 
 import Search from "../components/Search";
 import Sidebar from "../components/Sidebar";
@@ -21,14 +22,16 @@ import notFoundImage from "../assets/error_404.jpeg";
 
 function ProductsPage() {
   useTitle("Products");
-
-  // const { products } = useProducts();
-  const { products } = [];
-
+  const dispatch = useDispatch();
+  const { products, loading } = useSelector((store) => store.product);
   const { query, setQuery } = useQuery();
   const [displayed, setDisplayed] = useState([]);
 
   const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
 
   useEffect(() => {
     setDisplayed(products);
@@ -66,16 +69,16 @@ function ProductsPage() {
 
           {/* products */}
           <div className="w-full grid grid-cols-2 lg:grid-cols-3 border-l rounded overflow-hidden">
-            {/* {!displayed.length && !query.search && <Loader />}
-            {!displayed.length && query.search && (
+            {loading && <Loader />}
+            {!displayed.length && !loading && query.search && (
               <div className=" py-10 border-y border-r w-full col-span-full grid place-items-center">
                 <img src={notFoundImage} alt="Not found" />
               </div>
-            )} */}
+            )}
 
-            {/* {displayed.map((product) => (
+            {displayed.map((product) => (
               <Card key={product.id} data={product} />
-            ))} */}
+            ))}
           </div>
         </div>
       </div>
