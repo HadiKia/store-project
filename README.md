@@ -33,7 +33,7 @@
 
 - React JS
 - Redux Toolkit
-- Context + Reducer
+- Context + Reducer in two branch
 - Tailwind CSS
 - Axios
 
