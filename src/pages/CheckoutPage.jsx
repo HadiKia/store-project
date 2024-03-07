@@ -2,7 +2,7 @@ import BasketCard from "../components/BasketCard";
 import BasketSidebar from "../components/BasketSidebar";
 import EmptyBasket from "../components/EmptyBasket";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useTitle } from "../hooks/useTitle";
 
 // icons

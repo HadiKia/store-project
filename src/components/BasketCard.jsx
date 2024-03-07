@@ -1,3 +1,5 @@
+import { useDispatch } from "react-redux";
+import { removeItem, increase, decrease } from "../features/cart/cartSlice";
 import { capitalizeFirstLetter, shortenText } from "../helpers/helper";
 
 // icons
@@ -18,8 +20,10 @@ const priceStyle =
   "text-sm md:text-base lg:text-xl flex items-center justify-end gap-x-1";
 const currencyStyle = "text-xs md:text-sm opacity-50 ";
 
-function BasketCard({ data, clickHandler }) {
+function BasketCard({ data }) {
   const { image, title, category, quantity, price } = data;
+
+  const dispatch = useDispatch();
 
   return (
     <tr className={containerStyle}>
@@ -36,16 +40,16 @@ function BasketCard({ data, clickHandler }) {
       <td>
         <div className={actionsDivStyle}>
           {quantity > 1 ? (
-            <button onClick={() => clickHandler("DECREASE", data)}>
+            <button onClick={() => dispatch(decrease(data))}>
               <img src={minusIcon} alt="+" className={iconStyle} />
             </button>
           ) : (
-            <button onClick={() => clickHandler("REMOVE_ITEM", data)}>
+            <button onClick={() => dispatch(removeItem(data))}>
               <img src={trashIcon} alt="delete" className={trashStyle} />
             </button>
           )}
           <span>{quantity}</span>
-          <button onClick={() => clickHandler("INCREASE", data)}>
+          <button onClick={() => dispatch(increase(data))}>
             <img src={plusIcon} alt="+" className={iconStyle} />
           </button>
         </div>
