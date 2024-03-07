@@ -2,7 +2,7 @@ import BasketCard from "../components/BasketCard";
 import BasketSidebar from "../components/BasketSidebar";
 import EmptyBasket from "../components/EmptyBasket";
 import { Link } from "react-router-dom";
-// import { useCart } from "../hooks/useCart";
+import { useDispatch, useSelector } from "react-redux";
 import { useTitle } from "../hooks/useTitle";
 
 // icons
@@ -24,11 +24,9 @@ const thStyle = "pb-2 font-medium";
 
 function CheckoutPage() {
   useTitle("Cart");
-  // const [state, dispatch] = useCart();
+  const state = useSelector((store) => store.cart);
 
-  // const clickHandler = (type, payload) => dispatch({ type, payload });
-
-  // if (!state.itemsCounter) return <EmptyBasket />;
+  if (!state.itemsCounter) return <EmptyBasket />;
 
   return (
     <div className={containerStyle}>
@@ -38,9 +36,9 @@ function CheckoutPage() {
         <Link to="/checkout" className="opacity-50">
           CART
         </Link>
-        {/* {!!state.itemsCounter && (
+        {!!state.itemsCounter && (
           <span className={counterStyle}>{state.itemsCounter}</span>
-        )} */}
+        )}
       </div>
 
       <div className={mainDivStyle}>
@@ -55,19 +53,15 @@ function CheckoutPage() {
               </tr>
             </thead>
             <tbody>
-              {/* {state.selectedItems.map((product) => (
-                <BasketCard
-                  key={product.id}
-                  data={product}
-                  clickHandler={clickHandler}
-                />
-              ))} */}
+              {state.selectedItems.map((product) => (
+                <BasketCard key={product.id} data={product} />
+              ))}
             </tbody>
           </table>
         </div>
 
         <div className="w-full md:max-w-xs lg:max-w-sm xl:max-w-md md:sticky md:top-56">
-          {/* <BasketSidebar state={state} clickHandler={clickHandler} /> */}
+          <BasketSidebar state={state} />
         </div>
       </div>
     </div>
