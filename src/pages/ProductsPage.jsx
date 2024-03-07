@@ -69,7 +69,7 @@ function ProductsPage() {
 
           {/* products */}
           <div className="w-full grid grid-cols-2 lg:grid-cols-3 border-l rounded overflow-hidden">
-            {loading && <Loader />}
+            {!displayed.length && loading && <Loader />}
             {!displayed.length && !loading && query.search && (
               <div className=" py-10 border-y border-r w-full col-span-full grid place-items-center">
                 <img src={notFoundImage} alt="Not found" />
