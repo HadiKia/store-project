@@ -1,10 +1,16 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { productQuantity } from "../helpers/helper";
 import { fetchProducts } from "../features/product/productSlice";
-import Loader from "../components/Loader";
+import { productQuantity } from "../helpers/helper";
+import {
+  removeItem,
+  addItem,
+  increase,
+  decrease,
+} from "../features/cart/cartSlice";
 import DisclosureItem from "../components/Disclosure";
+import Loader from "../components/Loader";
 
 // icons
 import arrow from "../assets/arrowRight.svg";
@@ -41,6 +47,7 @@ const uspImageStyle = "w-9 md:w-fit";
 
 function DetailsPage() {
   const { id } = useParams();
+  const cartState = useSelector((store) => store.cart);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -54,12 +61,7 @@ function DetailsPage() {
   if (!data) return <Loader />;
   document.title = data.title;
 
-  // const quantity = productQuantity(state, data.id);
-  const quantity = 0;
-
-  const clickHandler = (type) => {
-    // dispatch({ type, payload: data });
-  };
+  const quantity = productQuantity(cartState, data.id);
 
   return (
     <div className={containerStyle}>
@@ -91,7 +93,7 @@ function DetailsPage() {
 
             <div className="md:w-full flex items-center gap-x-5 md:justify-center md:gap-x-6">
               {quantity === 1 && (
-                <button onClick={() => clickHandler("REMOVE_ITEM")}>
+                <button onClick={() => dispatch(removeItem(data))}>
                   <img
                     src={trashIcon}
                     alt="delete"
@@ -100,7 +102,7 @@ function DetailsPage() {
                 </button>
               )}
               {quantity > 1 && (
-                <button onClick={() => clickHandler("DECREASE")}>
+                <button onClick={() => dispatch(decrease(data))}>
                   <img src={minusIcon} alt="-" className="my-[7px]" />
                 </button>
               )}
@@ -108,13 +110,13 @@ function DetailsPage() {
               {quantity === 0 ? (
                 <button
                   className={addCartButtonStyle}
-                  onClick={() => clickHandler("ADD_ITEM")}
+                  onClick={() => dispatch(addItem(data))}
                 >
                   <img src={bagIcon} alt="bag" className={bagIconStyle} />
                   ADD TO CART
                 </button>
               ) : (
-                <button onClick={() => clickHandler("INCREASE")}>
+                <button onClick={() => dispatch(increase(data))}>
                   <img src={plusIcon} alt="+" className="my-[7px]" />
                 </button>
               )}
